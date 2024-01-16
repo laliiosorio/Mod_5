@@ -1,0 +1,21 @@
+main {
+    min-height: 100vh;
+    background-color: #103A74;
+    padding: 2rem;
+}
+
+.logo-wrapper {
+    margin: 0 auto 2rem;
+    max-width: 40%;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-wrapper {
+        max-width: 80%;
+    }
+}

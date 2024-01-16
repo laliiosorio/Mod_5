@@ -1,0 +1,55 @@
+<div class="container">
+  <section class="btn-group">
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      (change)="changeViewMode()"
+    >
+      <mat-button-toggle value="card" aria-label="Card View">
+        <mat-icon>view_module</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="table" aria-label="Table View">
+        <mat-icon>view_list</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </section>
+
+  <ng-container *ngIf="viewMode === 'table'; else cardView">
+    <table
+      mat-table
+      [dataSource]="pokemonList"
+      class="animate__animated animate__bounce animate__fadeIn"
+    >
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef class="image-header">Pokémon</th>
+        <td mat-cell *matCellDef="let pokemon" class="image-cell">
+          <img
+            class="table-image"
+            [src]="
+              'https://img.pokemondb.net/artwork/large/' + pokemon.name + '.jpg'
+            "
+            alt="pokemon-image"
+          />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="name-header">Name</th>
+        <td mat-cell *matCellDef="let pokemon" class="name-cell">
+          {{ pokemon.name }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let pokemon; columns: displayedColumns"
+        [routerLink]="['/pokemon', pokemon.name]"
+        class="table-rows"
+      ></tr>
+    </table>
+  </ng-container>
+
+  <ng-template #cardView>
+    <app-grid [pokemonList]="pokemonList"> </app-grid>
+  </ng-template>
+</div>

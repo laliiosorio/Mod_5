@@ -1,0 +1,5 @@
+<mat-grid-list [cols]="cols" gutterSize="10px">
+  <mat-grid-tile class="card-grid" *ngFor="let pokemon of pokemonList" fxFlex fxFlex.gt-sm="50%">
+    <app-card [pokemon]="pokemon"></app-card>
+  </mat-grid-tile>
+</mat-grid-list>

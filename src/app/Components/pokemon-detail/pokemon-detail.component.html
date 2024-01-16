@@ -1,0 +1,60 @@
+<div class="container">
+  <section class="btns">
+    <a class="btn btn-danger" routerLink="/">Back</a>
+  </section>
+
+  <div
+    *ngIf="pokemon"
+    class="detail-card animate__animated animate__bounce animate_fadeIn">
+    <img
+      [src]="'https://img.pokemondb.net/artwork/large/' + pokemon.name + '.jpg'"
+      alt="pokemon" />
+
+    <mat-accordion class="accordion">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="accordion-title">
+            {{ pokemon.name }}</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+
+        <div class="panel-content">
+          <section class="detail-header">
+            <div class="detail-item">
+              <mat-icon class="detail-icon-height">height</mat-icon>
+              <h4>Height</h4>
+              <p>{{ pokemon.height }}</p>
+            </div>
+            <div class="detail-item">
+              <mat-icon class="detail-icon-weight">fitness_center</mat-icon>
+              <h4>Weight</h4>
+              <p>{{ pokemon.weight }}</p>
+            </div>
+          </section>
+
+          <div class="detail-body">
+            <p>Types:</p>
+            <ng-container
+              *ngFor="let type of pokemon.types"
+              class="group-chips">
+              <mat-chip class="ability-chip">
+                {{ type.type.name }}
+              </mat-chip>
+            </ng-container>
+          </div>
+
+          <div class="detail-body">
+            <p>Abilities</p>
+            <ng-container *ngFor="let ability of pokemon.abilities">
+              <mat-chip class="ability-chip">
+                {{ ability.ability.name }}
+              </mat-chip>
+            </ng-container>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

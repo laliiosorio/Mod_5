@@ -1,0 +1,46 @@
+.card {
+  width: 18rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  background-color: #ffcc01;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card-title {
+  padding: 0;
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.image-wrapper {
+  margin: 14px auto;
+  width: 16rem;
+  height: 12rem;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.card-image {
+  width: 100%;
+  height: inherit;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+  }
+}
